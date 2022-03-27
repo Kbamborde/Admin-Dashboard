@@ -18,6 +18,20 @@ themeToggler.addEventListener("click", () => {
   document.body.classList.toggle("dark-theme-variables");
   themeToggler.querySelector("span:nth-child(1)").classList.toggle("active");
   themeToggler.querySelector("span:nth-child(2)").classList.toggle("active");
+  console.log(document.body.classList[0]);
+  const themeColor = document.body.classList[0];
+  if (document.body.classList) {
+    localStorage.setItem("themObj", `${themeColor}`);
+  } else {
+    localStorage.setItem("themObj", "");
+  }
+});
+
+window.addEventListener("load", () => {
+  const item = localStorage.getItem("themObj");
+  if (item === "dark-theme-variables") {
+    document.body.className = item;
+  }
 });
 
 // Fill ord(ers in Table:
